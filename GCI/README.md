@@ -1,9 +1,9 @@
 # Prediction
 
 ## 概要
-スポーツ予測に関する2値分類タスク
+スポーツ分析に関する2値分類
 
-- **タスク**: 選手データからドラフト指名の有無を予測（2値分類）
+- **タスク**: 選手データからドラフト指名の有無を予測
 - **データ**: 構造化データ
 - **結果**: AUC0.84705
 - **順位**: 上位3.1%
@@ -17,7 +17,7 @@
 - 特徴重要度のCV分析による特徴量の評価
 
 ## 使用技術
-- Python / XGBoost / Optuna / pandas / matplotlib
+-  XGBoost / scikit-learn　/ Optuna / pandas / matplotlib / pandas
 
 ## 詳細
 取り組みの詳細は[レポート](report.pdf)を参照してください。
