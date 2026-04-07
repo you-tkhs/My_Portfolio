@@ -7,7 +7,7 @@
 ### DL - Semantic Segmentation (松尾研DL基礎講座)
 - **タスク**: 室内シーンのセマンティックセグメンテーション
 - **結果**: mIOU 0.658
-- **順位**: 上位　6.1%
+- **順位**: 上位6.1%
 - 詳細は[DL/README.md](DL/README.md)を参照
 
 ### GCI - NFL Draft Prediction
