@@ -37,7 +37,7 @@
   ばらつきが小さく重要度が高い特徴量を優先的に採用
 
 ## 主な使用技術
--  XGBoost / scikit-learn　/ Optuna / pandas / matplotlib / pandas
+-  XGBoost / scikit-learn　/ Optuna / pandas / matplotlib /
 
 ## 詳細
 取り組みの詳細は[レポート](report.pdf)を参照してください。
