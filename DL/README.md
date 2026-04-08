@@ -1,21 +1,50 @@
-# Semantic Segmentation
+# Semantic Segmentation（室内シーン）
 
 ## 概要
-RGB画像と深度マップを入力とした室内シーンの
-セマンティックセグメンテーション。
+RGB画像と深度マップを入力とした室内シーンのセマンティックセグメンテーション。
+クラス不均衡が大きく、訓練データが極めて少ないという2つの制約下で精度向上に取り組んだ。
 
-- **タスク**: 室内シーンのセマンティックセグメンテーション
-- **データ**: 室内シーン（少数）
 - **結果**: mIOU 0.658
 - **順位**: 上位6.1%
 
+## 技術的な工夫と意思決定
+
 ## 主な工夫
-- ConvNeXtをbackboneとしたUperUNet
-- Panoptic Segmentationで事前学習済みSwin Transformerとのアンサンブル
-- RGBと深度マップを4chで入力するよう改造
-- 少データに対応したデータ拡張（室内環境を考慮）
-- Dice Loss + Cross Entropyの組み合わせ
-- TTA（Test Time Augmentation）
+
+### Backbone選定
+ResNet → Swin Transformer → ConvNeXtの順に検討した。
+Swin Transformerは精度が伸びなかった。少データ環境では
+事前学習データとのドメインシフトを埋めるのに十分な
+学習データがなかったためと判断した。
+最終的にSwin Transformerの設計思想をCNNで再現した
+ConvNeXtを採用。帰納バイアスによりドメインシフトがある
+条件下でも安定した精度が得られた。
+
+### アーキテクチャ
+単純なU-Net構造からUperNet構造に変更。
+エンコーダー最終層でPyramid Pooling Moduleを用いることで
+広域コンテキストと局所情報を同時に獲得した。
+また、Panoptic Segmentationで事前学習済みのSwin Transformerと
+アンサンブルすることで最終精度を向上させた。
+（Panoptic SegmentationはSemantic Segmentationと類似タスクで
+あるためドメインシフトが少ないと判断）
+
+### 入力の工夫
+深度マップをRGBと独立したストリームではなく4ch入力として統合。
+少データ環境でパラメータ数を抑えつつ空間的整合性を保つための選択。
+
+### 学習の工夫
+- 差分学習率：エンコーダーの学習率をデコーダーの0.8倍に設定。
+  下げすぎると精度が落ちることを実験で確認。(エンコーダー)
+  入力層を4chに改造したことやドメインシフトの影響と判断。
+- Loss関数：Dice Loss単体では学習が安定しなかったため
+  Cross Entropyとの加重平均（0.8:0.2）を採用
+- データ拡張：室内環境を考慮した拡張を設計
+  （樽型歪み・照明変化・CoarseDropout・CutMixなど。）
+
+### その他の工夫
+- 可視化：損失曲線やテストデータの出力を可視化する事でモデルの学習状況や、タスクにおける現状を解析した。
+- 推論の工夫：テストデータに対してTTAを行うことでアンサンブリングの効果を図った。
 
 ## 使用技術
 - PyTorch / timm / transformers / albumentations
