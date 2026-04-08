@@ -1,8 +1,10 @@
 # My_Portfolio
 
-松尾研究室のコンペで上位を獲得した際の記録です。
+自身の開発・研究経験をまとめた物です
 
-## コンペ一覧
+## コンペ
+
+松尾研究室のコンペで上位を獲得した際の記録です。
 
 ### DL基礎講座 - Semantic Segmentation 
 - **タスク**: 室内シーンのセマンティックセグメンテーション
@@ -16,7 +18,9 @@
 - **順位**: 上位3.1%
 - 詳細は[GCI/README.md](GCI/README.md)を参照
 
-## 主な使用技術
+### 主な使用技術
 - **Deep Learning**: PyTorch / timm / transformers / albumentations
 - **Data Analysis**: XGBoost /  scikit-learn / Optuna / matplotlib /pandas 
 - **言語**: Python
+
+## 研究
