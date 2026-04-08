@@ -25,6 +25,6 @@
 
 ## 研究
 
-### UAV画像を用いた実験水田の3次元復元（本学農学部との共同研究）
+### UAV画像を用いた実験水田の3次元復元
 - NeRFと3DGSをPoC比較し、3DGSによるデータ拡張で復元精度を向上
 - 詳細は[Research/README.md](Research/README.md)を参照
