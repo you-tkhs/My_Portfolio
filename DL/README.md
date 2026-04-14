@@ -19,13 +19,9 @@ ConvNeXtを採用。帰納バイアスによりドメインシフトがある
 条件下でも安定した精度が得られた。
 
 ### アーキテクチャ
-単純なU-Net構造からUperNet構造に変更。
-エンコーダー最終層でPyramid Pooling Moduleを用いることで
-広域コンテキストと局所情報を同時に獲得した。
-また、Panoptic Segmentationで事前学習済みのSwin Transformerと
-アンサンブルすることで最終精度を向上させた。
-（Panoptic SegmentationはSemantic Segmentationと類似タスクで
-あるためドメインシフトが少ないと判断）
+- 単純なU-Net構造からUperNet構造に変更：U-Net構造ではGAPでボトルネックにグローバルな文脈を付与していたが、単一ベクトルへの圧縮では多スケールの情報を保持しきれないと判断。UperNet構造ではGAPをPPMに置き換え、複数粒度のコンテキストを同時に集約できるよう改善した。またデコーダもFPN的な構成とし、各スケールの特徴量を対等に統合することで広域・局所両方の情報を精度向上に活かした。
+- アンサンブル：Panoptic Segmentationで事前学習済みのSwin Transformerと
+アンサンブルすることで最終精度を向上させた（Panoptic SegmentationはSemantic Segmentationと類似タスクであるためドメインシフトが少ないと判断）。
 
 ### 入力の工夫
 深度マップをRGBと独立したストリームではなく4ch入力として統合。
