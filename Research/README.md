@@ -17,13 +17,13 @@ UAV空撮画像は撮影視点に物理的な限界があり、
 
 ### Posterデータセット（標準テクスチャ）での比較
 
-| NeRF | 3DGS |
+| NeRF(左:元画像、右:レンダリング画像) | 3DGS (左:元画像、右:レンダリング画像)|
 |------|------|
 | ![NeRF](images/nerf_poster.png) | ![3DGS](images/3dgs_poster.png) |
 
 ### 実験水田（高周波テクスチャ）での比較
 
-| NeRF | 3DGS |
+| NeRF(左:元画像、右:レンダリング画像) | 3DGS(左:元画像、右:レンダリング画像) |
 |------|------|
 | ![NeRF](images/nerf_rice.png) | ![3DGS](images/3dgs_rice.png) |
 
