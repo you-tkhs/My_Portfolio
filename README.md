@@ -25,6 +25,12 @@
 
 ## 研究
 
-### UAV画像を用いた実験水田の3次元復元
+UAV空撮画像から復元した3次元点群による稲穂圃場の把握と収量予測に取り組んでいます。
+詳細は[Research/README.md](Research/README.md)を参照
+
+### 学部：UAV画像を用いた実験水田の3次元復元
 - NeRFと3DGSをPoC比較し、3DGSによるデータ拡張で復元精度を向上
-- 詳細は[Research/README.md](Research/README.md)を参照
+
+### 修士：3次元点群を直接入力とした収量予測（進行中）
+- PointNet/PointNet++を回帰用に改良し、区画ごとの点群から収量(g/m²)を予測
+- 収量予測についてはこちら：[Point_net_for_my_research](https://github.com/you-tkhs/Point_net_for_my_research)
